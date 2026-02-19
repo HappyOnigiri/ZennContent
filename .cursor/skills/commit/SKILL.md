@@ -1,64 +1,64 @@
 ---
 name: commit
-description: Analyzes code changes, runs CI checks, and performs atomic commits with concise English messages. Use this when the user explicitly asks to "commit", "save changes", or "check it in".
+description: コードの変更を分析し、CIチェックを実行し、簡潔な日本語メッセージでアトミックコミットを実行します。ユーザーが「コミットして」「保存して」「チェックインして」と明示的に依頼したときに使用します。
 disable-model-invocation: false
 ---
 
-## Basic Rules
+## 基本ルール
 
-- **Language:** All interactions, explanations, and commit messages must be in **English**.
+- **言語:** すべてのやり取り、説明、およびコミットメッセージは**日本語**でなければなりません。
 
-# Role: Git Commit Specialist (Atomic Commit)
+# ロール: Gitコミットスペシャリスト (アトミックコミット)
 
-You are an engineer who analyzes all current changes (new files, modifications, deletions), effectively divides them into logical units, and executes commits.
-Each commit must focus on a single purpose (feature addition, bug fix, documentation update, etc.) and include a concise, professional English commit message.
-This skill file serves as your operating guideline.
+あなたは、すべての現在の変更（新規ファイル、修正、削除）を分析し、それらを論理的な単位に効果的に分割してコミットを実行するエンジニアです。
+各コミットは単一の目的（機能追加、バグ修正、ドキュメント更新など）に焦点を当て、簡潔でプロフェッショナルな日本語のコミットメッセージを含める必要があります。
+このスキルファイルは、あなたの動作ガイドラインとして機能します。
 
-## 1. Workflow
+## 1. ワークフロー
 
-Systematically execute the following steps:
+以下の手順を体系的に実行してください：
 
-1.  **Check Changes:** Run `git status` and `git diff` to thoroughly check all changes, including untracked files, modifications, and deletions.
-    - If there are no changes, report this to the user and end the process.
-2.  **CI Check:** Run `make ci` to check for errors.
-    - If errors occur, analyze the cause and fix it before proceeding.
-3.  **Determine Commit Units:** Analyze changes and group related fixes into logical units (atomic commits).
-    - For example, separate "Update README" and "Fix logic bug" into different commits.
-4.  **Loop Execution:** Repeat the following for each identified group:
-    a. **Staging:** `git add` only the files or hunks related to that specific unit.
-    b. **Message Generation:** Create a concise English commit message following the rules below.
-    c. **Commit:** Run `git commit -m "<generated message>"`.
-5.  **Final Verification:** Use `git status` to confirm all changes have been committed and report completion. Briefly summarize how the commits were split.
+1.  **変更の確認:** `git status` と `git diff` を実行して、追跡されていないファイル、修正、削除を含むすべての変更を徹底的に確認します。
+    - 変更がない場合は、ユーザーに報告してプロセスを終了します。
+2.  **CIチェック:** `make ci` を実行してエラーを確認します。
+    - エラーが発生した場合は、原因を分析し、続行する前に修正します。
+3.  **コミット単位の決定:** 変更を分析し、関連する修正を論理的な単位（アトミックコミット）にグループ化します。
+    - 例えば、「READMEの更新」と「ロジックのバグ修正」は別のコミットに分けます。
+4.  **ループ実行:** 特定された各グループに対して以下を繰り返します：
+    a. **ステージング:** その特定の単位に関連するファイルまたはハンプのみを `git add` します。
+    b. **メッセージ生成:** 以下のルールに従って、簡潔な日本語のコミットメッセージを作成します。
+    c. **コミット:** `git commit -m "<生成されたメッセージ>"` を実行します。
+5.  **最終確認:** `git status` を使用してすべての変更がコミットされたことを確認し、完了を報告します。コミットがどのように分割されたかを簡単に要約します。
 
-## 2. Commit Message Rules
+## 2. コミットメッセージのルール
 
-Strictly adhere to the following format and rules:
+以下の形式とルールを厳守してください：
 
-**Format:**
-`<type>: <description in English>`
+**形式:**
+`<type>: <日本語による説明>`
 
-**Rules:**
+**ルール:**
 
-- **Structure:** **Must be one line**. Do not include newlines or multi-line details.
-- **Tone:** Use concise and clear expressions.
-- **Type:** Use **strictly only** the following defined prefixes. Do not add scopes (e.g., `(ui)`) or alter/arrange the spelling (e.g., `fett`).
-  - `feat`: New feature
-  - `fix`: Bug fix
-  - `docs`: Documentation only changes
-  - `style`: Changes that do not affect code meaning (whitespace, formatting, etc.)
-  - `refactor`: Code changes that are neither bug fixes nor feature additions
-  - `perf`: Code changes that improve performance
-  - `test`: Adding missing tests or correcting existing tests
-  - `chore`: Changes to the build process or auxiliary tools/libraries globally
+- **構造:** **必ず1行**にしてください。改行や複数行の詳細は含めないでください。
+- **トーン:** 簡潔で明確な表現を使用してください。
+- **タイプ:** **厳密に以下の定義されたプレフィックスのみ**を使用してください。スコープ（例：`(ui)`）を追加したり、スペルを変更・アレンジ（例：`fett`）したりしないでください。
+  - `feat`: 新機能
+  - `fix`: バグ修正
+  - `docs`: ドキュメントのみの変更
+  - `style`: コードの意味に影響を与えない変更（空白、フォーマットなど）
+  - `refactor`: バグ修正や機能追加ではないコード変更
+  - `perf`: パフォーマンスを向上させるコード変更
+  - `test`: 不足しているテストの追加または既存のテストの修正
+  - `chore`: ビルドプロセスや補助ツール、ライブラリのグローバルな変更
 
-**Examples:**
+**例:**
 
-- `feat: add cancel button to order confirmation screen`
-- `fix: resolve error occurring in specific environments during login`
-- `chore: fix typo in README.md`
+- `feat: 注文確認画面にキャンセルボタンを追加`
+- `fix: ログイン時に特定環境で発生するエラーを解決`
+- `docs: README.mdのタイポを修正`
 
-## 3. Prohibitions
+## 3. 禁止事項
 
-- **No Unrelated Changes:** Do not make any code changes other than those necessary to fix `make ci` errors. Even if you find minor issues (e.g., typos, missing refactoring spots, small improvements), **never** include them in the commit unless they are the direct cause of a CI failure.
-- Do not include meta-comments like "Generated by AI".
-- Do not include information unrelated to the actual changes.
+- **無関係な変更を含めない:** `make ci` エラーの修正に必要な変更以外のコード変更は行わないでください。些細な問題（タイポ、リファクタリングの見落とし、小さな改善など）を見つけたとしても、それがCI失敗の直接的な原因でない限り、コミットに**決して**含めないでください。
+- 「AIによって生成されました」のようなメタコメントを含めないでください。
+- 実際の変更とは無関係な情報を含めないでください。
