@@ -1,4 +1,4 @@
-.PHONY: ci format preview repomix
+.PHONY: ci format preview repomix repomix-all repomix-except-articles sync-agent new-article
 
 ci:
 	npm run ci
@@ -25,3 +25,10 @@ sync-agent:
 	@mkdir -p .agent
 	rsync -av --delete .cursor/ .agent/
 	@echo ".cursor files have been synchronized to .agent."
+
+new-article:
+	@ARTICLE_FILE=$$(npx zenn new:article --machine-readable) && \
+	SLUG=$$(echo $$ARTICLE_FILE | sed -e 's|articles/||' -e 's|\.md||') && \
+	mkdir -p images/$$SLUG && \
+	echo "Created article: $$ARTICLE_FILE" && \
+	echo "Created image directory: images/$$SLUG"
