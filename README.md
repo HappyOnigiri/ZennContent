@@ -32,6 +32,15 @@ npm install
 新しい記事を作成する場合：
 
 ```bash
+make new-article
+```
+
+> [!NOTE]
+> `make new-article` を使用すると、記事の Markdown ファイルの作成と同時に、`images/` ディレクトリ内に記事の ID と同じ名前の画像格納用ディレクトリが自動的に作成されます。
+
+または、Zenn CLI の標準コマンドを使用する場合：
+
+```bash
 npm run new:article
 ```
 
