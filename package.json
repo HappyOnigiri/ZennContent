@@ -1,4 +1,5 @@
 {
+  "name": "ZennContent",
   "scripts": {
     "zenn": "zenn",
     "new:article": "zenn new:article",
