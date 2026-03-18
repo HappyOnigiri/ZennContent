@@ -1,4 +1,4 @@
-.PHONY: ci format preview repomix repomix-all repomix-except-articles sync-agent new-article
+.PHONY: ci format preview repomix repomix-all repomix-except-articles sync-agent new-article sync-ruler setup
 
 ci:
 	npm run ci
@@ -25,3 +25,11 @@ new-article:
 	mkdir -p images/$$SLUG && \
 	echo "Created article: $$ARTICLE_FILE" && \
 	echo "Created image directory: images/$$SLUG"
+
+sync-ruler:
+	@sh scripts/sync_rule.sh
+
+setup:
+	@printf '#!/bin/sh\nmake sync-ruler\n' > .git/hooks/post-merge && chmod +x .git/hooks/post-merge
+	@printf '#!/bin/sh\nmake sync-ruler\n' > .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout
+	@echo "setup: git hooks installed"
