@@ -2,3 +2,9 @@ node_modules
 .DS_Store
 tmp/
 .envrc
+
+# AI Rules
+/AGENTS.md
+/.cursor
+/.agent
+/.claude
