@@ -1,0 +1,11 @@
+#!/bin/bash
+
+branch_checkout="$3"
+
+if [ "$branch_checkout" = "1" ]; then
+  current_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+  if git reflog show "$current_branch" 2>/dev/null | head -1 | grep -q "branch: Created from"; then
+    echo "⚠ このリポジトリは main ブランチに直接 push する運用です。"
+    echo "  ブランチを作成せず、main で作業することを推奨します。"
+  fi
+fi
