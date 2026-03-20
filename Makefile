@@ -1,4 +1,4 @@
-.PHONY: ci format preview repomix repomix-all repomix-except-articles sync-agent new-article setup
+.PHONY: ci format preview repomix repomix-all repomix-except-articles new-article setup
 
 ci:
 	npm run ci
