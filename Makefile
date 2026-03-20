@@ -1,4 +1,4 @@
-.PHONY: ci format preview repomix repomix-all repomix-except-articles sync-agent new-article sync-ruler setup
+.PHONY: ci format preview repomix repomix-all repomix-except-articles sync-agent new-article setup
 
 ci:
 	npm run ci
@@ -26,10 +26,5 @@ new-article:
 	echo "Created article: $$ARTICLE_FILE" && \
 	echo "Created image directory: images/$$SLUG"
 
-sync-ruler:
-	@sh scripts/sync_rule.sh
-
 setup:
-	@if [ -e .git/hooks/post-merge ]; then echo "setup: skipping post-merge (already exists)"; else printf '#!/bin/sh\nmake sync-ruler\n' > .git/hooks/post-merge && chmod +x .git/hooks/post-merge; fi
-	@if [ -e .git/hooks/post-checkout ]; then echo "setup: skipping post-checkout (already exists)"; else printf '#!/bin/sh\nmake sync-ruler\n' > .git/hooks/post-checkout && chmod +x .git/hooks/post-checkout; fi
-	@echo "setup: git hooks installed"
+	curl -fsSL https://raw.githubusercontent.com/HappyOnigiri/ShareSettings/main/SyncRule/run.sh | bash
