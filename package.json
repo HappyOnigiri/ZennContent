@@ -13,5 +13,8 @@
     "prettier": "^3.8.1",
     "repomix": "^1.11.1",
     "zenn-cli": "^0.4.7"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
