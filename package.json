@@ -1,5 +1,6 @@
 {
   "name": "ZennContent",
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "zenn": "zenn",
     "new:article": "zenn new:article",
@@ -7,7 +8,7 @@
     "preview": "zenn preview",
     "format": "prettier --write '**/*.md'",
     "check:format": "prettier --check '**/*.md'",
-    "ci": "npm run check:format"
+    "ci": "pnpm run check:format"
   },
   "devDependencies": {
     "prettier": "^3.8.1",
