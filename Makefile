@@ -1,4 +1,4 @@
-.PHONY: ci format preview repomix repomix-all repomix-except-articles new-article setup
+.PHONY: ci format preview repomix repomix-all repomix-except-articles new-article
 
 ci:
 	pnpm run ci
@@ -25,6 +25,3 @@ new-article:
 	mkdir -p images/$$SLUG && \
 	echo "Created article: $$ARTICLE_FILE" && \
 	echo "Created image directory: images/$$SLUG"
-
-setup:
-	curl -fsSL https://raw.githubusercontent.com/HappyOnigiri/ShareSettings/main/SyncRule/run.sh | bash
