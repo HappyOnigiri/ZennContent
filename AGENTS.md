@@ -9,7 +9,7 @@ slug は `zenn-cli` が生成したランダムな文字列のまま維持する
 
 ### 文章規範
 
-記事の本文を書く・推敲する前に、必ず `~/.claude/skills/global-japanese-tech-writing/SKILL.md` を読み込み、その規範に従って書く。
+記事の本文を書く・推敲する前に、リポジトリルートの `.claude/skills/japanese-tech-writing/SKILL.md` を読み込み、その規範に従って書く。
 加えて、このリポジトリでは次に従う。
 
 - 「です・ます」調で統一する
